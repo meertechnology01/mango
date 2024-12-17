@@ -192,7 +192,7 @@ This project is licensed under the MIT License.
 
 For any issues or questions, feel free to reach out:
 
-**Email**: [your-email@example.com](mailto:your-email@example.com)
+**Email**: [Meertech](mailto:meertechnology01@gmail.com)
 
 **GitHub**: [Meertech INC](https://github.com/meertechnology01)
 
