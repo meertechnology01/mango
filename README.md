@@ -1,44 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mango Calcium Carbide Detection System</title>
-</head>
-<body>
-    <h1>🍋 Mango Calcium Carbide Detection System</h1>
-    <p>This is an AI-powered mango analysis system designed to detect artificial ripening of mangoes using calcium carbide. It leverages a deep learning model served through a FastAPI backend and a modern React frontend to enable users to upload mango images and analyze them for calcium carbide contamination.</p>
+# 🍋 Mango Calcium Carbide Detection System
 
-    <h2>🚀 Features</h2>
-    <ul>
-        <li>Upload mango images for analysis.</li>
-        <li>Get predictions on whether a mango is artificially ripened with calcium carbide or naturally ripened.</li>
-        <li>Confidence scores for each prediction.</li>
-        <li>User-friendly web interface with real-time feedback.</li>
-    </ul>
+This is an AI-powered mango analysis system designed to detect artificial ripening of mangoes using calcium carbide. It leverages a deep learning model served through a FastAPI backend and a modern React frontend to enable users to upload mango images and analyze them for calcium carbide contamination.
 
-    <h2>🛠️ Tech Stack</h2>
-    <h3>Frontend</h3>
-    <ul>
-        <li><strong>React</strong> with TypeScript</li>
-        <li>Tailwind CSS (for styling)</li>
-        <li>Fetch API for backend communication</li>
-    </ul>
-    <h3>Backend</h3>
-    <ul>
-        <li><strong>FastAPI</strong> (Python web framework)</li>
-        <li>TensorFlow/Keras for the AI model</li>
-        <li>Pillow for image processing</li>
-    </ul>
-    <h3>Model</h3>
-    <ul>
-        <li>Pre-trained deep learning model (<code>calcium_carbide_model.h5</code>) to detect calcium carbide contamination.</li>
-    </ul>
+## 🚀 Features
 
-    <h2>🏗️ Project Structure</h2>
-    <pre>
+- Upload mango images for analysis.
+- Get predictions on whether a mango is artificially ripened with calcium carbide or naturally ripened.
+- Confidence scores for each prediction.
+- User-friendly web interface with real-time feedback.
 
-<code>
+## 🛠️ Tech Stack
+
+### Frontend
+
+- **React** with TypeScript
+- Tailwind CSS (for styling)
+- Fetch API for backend communication
+
+### Backend
+
+- **FastAPI** (Python web framework)
+- TensorFlow/Keras for the AI model
+- Pillow for image processing
+
+### Model
+
+- Pre-trained deep learning model (`calcium_carbide_model.h5`) to detect calcium carbide contamination.
+
+## 🏗️ Project Structure
+
+```
 project-root/
 │
 ├── backend/                  # FastAPI backend
@@ -48,7 +39,7 @@ project-root/
 │   └── ...
 │
 ├── frontend/                 # React frontend
-│   ├── src/                  
+│   ├── src/
 │   │   ├── components/       # Reusable UI components
 │   │   ├── pages/            # DetectionPage logic
 │   │   ├── config/constants.ts   # API endpoint config
@@ -57,161 +48,152 @@ project-root/
 │   └── ...
 │
 └── README.md                 # Project documentation
-</code>
-    </pre>
+```
 
-    <h2>🔧 Setup Instructions</h2>
-    <h3>1. Clone the Repository</h3>
-    <pre>
+## 🔧 Setup Instructions
 
-<code>
+### 1. Clone the Repository
+
+```bash
 git clone https://github.com/your-repo/mango-analysis.git
 cd mango-analysis
-</code>
-    </pre>
+```
 
-    <h3>2. Backend Setup</h3>
-    <h4>Install Dependencies:</h4>
-    <p>Make sure you have Python >=3.8 installed.</p>
-    <pre>
+### 2. Backend Setup
 
-<code>
+#### Install Dependencies:
+
+Make sure you have Python >=3.8 installed.
+
+```bash
 cd backend
 pip install -r requirements.txt
-</code>
-    </pre>
+```
 
-    <h4>Run the Backend Server:</h4>
-    <p>Ensure the <code>calcium_carbide_model.h5</code> model file is placed in the <code>backend</code> directory.</p>
-    <pre>
+#### Run the Backend Server:
 
-<code>
+Ensure the `calcium_carbide_model.h5` model file is placed in the `backend` directory.
+
+```bash
 uvicorn main:app --reload --host 127.0.0.1 --port 8000
-</code>
-    </pre>
-    <p>The server will be available at <code>http://127.0.0.1:8000</code>.</p>
+```
 
-    <h3>3. Frontend Setup</h3>
-    <h4>Install Dependencies:</h4>
-    <p>Ensure <strong>Node.js</strong> and <strong>npm</strong> are installed.</p>
-    <pre>
+The server will be available at `http://127.0.0.1:8000`.
 
-<code>
+### 3. Frontend Setup
+
+#### Install Dependencies:
+
+Ensure **Node.js** and **npm** are installed.
+
+```bash
 cd frontend
 npm install
-</code>
-    </pre>
+```
 
-    <h4>Start the Frontend:</h4>
-    <pre>
+#### Start the Frontend:
 
-<code>
+```bash
 npm run dev
-</code>
-    </pre>
-    <p>The frontend will run on <code>http://localhost:5173</code> (default Vite development port).</p>
+```
 
-    <h2>🖥️ How It Works</h2>
-    <ol>
-        <li>Users upload an image of a mango on the web interface.</li>
-        <li>The frontend sends the image to the FastAPI backend via a POST request.</li>
-        <li>The backend:
-            <ul>
-                <li>Preprocesses the image.</li>
-                <li>Runs the AI model to predict if calcium carbide is present.</li>
-                <li>Returns the result (<code>predicted_class</code>) and a confidence score.</li>
-            </ul>
-        </li>
-        <li>The frontend displays the result (natural ripening or calcium carbide detected).</li>
-    </ol>
+The frontend will run on `http://localhost:5173` (default Vite development port).
 
-    <h2>📦 API Endpoint</h2>
-    <p><strong>URL:</strong> <code>POST /predict</code></p>
-    <h4>Request:</h4>
-    <ul>
-        <li>Content-Type: <code>multipart/form-data</code></li>
-        <li>Payload: An image file with the field name <code>file</code>.</li>
-    </ul>
-    <h4>Response:</h4>
-    <pre>
+## 🖥️ How It Works
 
-<code>
+1. Users upload an image of a mango on the web interface.
+2. The frontend sends the image to the FastAPI backend via a POST request.
+3. The backend:
+   - Preprocesses the image.
+   - Runs the AI model to predict if calcium carbide is present.
+   - Returns the result (`predicted_class`) and a confidence score.
+4. The frontend displays the result (natural ripening or calcium carbide detected).
+
+## 📦 API Endpoint
+
+**URL:** `POST /predict`
+
+### Request:
+
+- Content-Type: `multipart/form-data`
+- Payload: An image file with the field name `file`.
+
+### Response:
+
+```json
 {
-  "result": 1,  // 1 = Calcium Carbide, 0 = No Calcium Carbide
+  "result": 1, // 1 = Calcium Carbide, 0 = No Calcium Carbide
   "confidence": 0.93,
   "message": "Prediction completed successfully",
   "success": true
 }
-</code>
-    </pre>
+```
 
-    <h2>🎨 Screenshots</h2>
-    <h4>1. Landing Page</h4>
-    <img src="https://via.placeholder.com/600x300.png?text=Landing+Page" alt="Landing Page">
-    <h4>2. Image Upload and Prediction Result</h4>
-    <img src="https://via.placeholder.com/600x300.png?text=Prediction+Result" alt="Prediction Result">
+## 🎨 Screenshots
 
-    <h2>🧪 Testing the Backend Independently</h2>
-    <p>If you want to test the backend API without the frontend:</p>
-    <ol>
-        <li>Run the backend server.</li>
-        <li>Use tools like <strong>Postman</strong> or <code>curl</code>:</li>
-    </ol>
-    <pre>
+### 1. Landing Page
 
-<code>
+![Landing Page](https://via.placeholder.com/600x300.png?text=Landing+Page)
+
+### 2. Image Upload and Prediction Result
+
+![Prediction Result](https://via.placeholder.com/600x300.png?text=Prediction+Result)
+
+## 🧪 Testing the Backend Independently
+
+If you want to test the backend API without the frontend:
+
+1. Run the backend server.
+2. Use tools like **Postman** or `curl`:
+
+```bash
 curl -X POST "http://127.0.0.1:8000/predict" -F "file=@path_to_your_image.jpg"
-</code>
-    </pre>
+```
 
-    <h2>📝 Notes</h2>
-    <ul>
-        <li>Ensure the AI model file (<code>calcium_carbide_model.h5</code>) is in the correct directory.</li>
-        <li>Supported image formats: <strong>JPEG</strong>, <strong>PNG</strong>, <strong>WEBP</strong>.</li>
-        <li>The threshold for prediction is <code>0.5</code>:
-            <ul>
-                <li><code>confidence > 0.5</code> → Calcium carbide detected.</li>
-                <li><code>confidence <= 0.5</code> → Natural ripening.</li>
-            </ul>
-        </li>
-    </ul>
+## 📝 Notes
 
-    <h2>🐛 Troubleshooting</h2>
-    <h4>Frontend: "Failed to fetch" error</h4>
-    <ul>
-        <li>Ensure the backend server is running at the correct endpoint (<code>http://127.0.0.1:8000</code>).</li>
-        <li>Check CORS settings if accessing from a different origin.</li>
-    </ul>
-    <h4>Backend: "Model not loaded" error</h4>
-    <ul>
-        <li>Verify that <code>calcium_carbide_model.h5</code> exists and is correctly placed in the backend folder.</li>
-        <li>Ensure TensorFlow is correctly installed.</li>
-    </ul>
+- Ensure the AI model file (`calcium_carbide_model.h5`) is in the correct directory.
+- Supported image formats: **JPEG**, **PNG**, **WEBP**.
+- The threshold for prediction is `0.5`:
+  - `confidence > 0.5` → Calcium carbide detected.
+  - `confidence <= 0.5` → Natural ripening.
 
-    <h2>🤝 Contributing</h2>
-    <p>Contributions are welcome! If you'd like to improve the project:</p>
-    <ol>
-        <li>Fork the repository.</li>
-        <li>Create a feature branch.</li>
-        <li>Submit a pull request.</li>
-    </ol>
+## 🐛 Troubleshooting
 
-    <h2>🛡️ License</h2>
-    <p>This project is licensed under the MIT License.</p>
+### Frontend: "Failed to fetch" error
 
-    <h2>💡 Acknowledgments</h2>
-    <ul>
-        <li>TensorFlow for deep learning.</li>
-        <li>FastAPI for backend development.</li>
-        <li>React and Tailwind CSS for building the user interface.</li>
-    </ul>
+- Ensure the backend server is running at the correct endpoint (`http://127.0.0.1:8000`).
+- Check CORS settings if accessing from a different origin.
 
-    <h2>🌟 Contact</h2>
-    <p>For any issues or questions, feel free to reach out:</p>
-    <p><strong>Email</strong>: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
-    <p><strong>GitHub</strong>: <a href="https://github.com/meertechnology01">Meertech INC</a></p>
+### Backend: "Model not loaded" error
 
-    <p>Enjoy detecting calcium carbide! 🥭</p>
+- Verify that `calcium_carbide_model.h5` exists and is correctly placed in the backend folder.
+- Ensure TensorFlow is correctly installed.
 
-</body>
-</html>
+## 🤝 Contributing
+
+Contributions are welcome! If you'd like to improve the project:
+
+1. Fork the repository.
+2. Create a feature branch.
+3. Submit a pull request.
+
+## 🛡️ License
+
+This project is licensed under the MIT License.
+
+## 💡 Acknowledgments
+
+- TensorFlow for deep learning.
+- FastAPI for backend development.
+- React and Tailwind CSS for building the user interface.
+
+## 🌟 Contact
+
+For any issues or questions, feel free to reach out:
+
+**Email**: [your-email@example.com](mailto:your-email@example.com)
+
+**GitHub**: [Meertech INC](https://github.com/meertechnology01)
+
+Enjoy detecting calcium carbide! 🥭
